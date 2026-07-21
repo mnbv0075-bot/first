@@ -7,10 +7,7 @@ from sklearn.metrics import accuracy_score
 import subprocess
 
 # aclImdb 폴더를 자동으로 찾기
-DATA_DIR = subprocess.run(
-    ["find", "/workspaces/first", "-type", "d", "-name", "aclImdb"],
-    capture_output=True, text=True
-).stdout.strip().split("\n")[0]
+DATA_DIR = "../data/aclImdb"
 
 print(f"데이터 폴더 찾음: {DATA_DIR}")
 
