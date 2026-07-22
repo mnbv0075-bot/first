@@ -131,8 +131,10 @@ def search(data: SearchInput):
     negative = total - positive
     ratio = round(positive / total * 100, 1)
 
-    if ratio >= 80:
-        verdict = "🍿 강력 호평작!"
+    if total < 5:
+        verdict = "🤷 리뷰가 부족해서 판단 보류!"
+    elif ratio >= 80:
+        verdict = "🔥 강력 호평작!"
     elif ratio >= 60:
         verdict = "👍 대체로 호평"
     elif ratio >= 40:
