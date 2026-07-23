@@ -1,4 +1,4 @@
-<img width="1078" height="1198" alt="image" src="https://github.com/user-attachments/assets/6ad816e0-c6d9-4df5-8ea6-f6154eca02b7" /># 🎬 영화 리뷰 감성 분석 & 종합 판정 서비스
+ 🎬 영화 리뷰 감성 분석 & 종합 판정 서비스
 
 > 영화 제목만 검색하면, AI가 실제 리뷰들을 읽고
 > "이 영화 볼만한가?"를 대신 판단해주는 웹 서비스
