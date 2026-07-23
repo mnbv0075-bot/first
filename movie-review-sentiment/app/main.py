@@ -1,3 +1,4 @@
+import os
 import joblib
 import urllib.request
 import urllib.parse
@@ -8,10 +9,11 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-model = joblib.load("../model/sentiment_model.pkl")
-vectorizer = joblib.load("../model/vectorizer.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "..", "model", "sentiment_model.pkl"))
+vectorizer = joblib.load(os.path.join(BASE_DIR, "..", "model", "vectorizer.pkl"))
 
-OMDB_API_KEY = "31291032"  # ← 여기에 이메일로 받은 키 입력!
+OMDB_API_KEY = os.environ.get("OMDB_API_KEY", "") # ← 여기에 이메일로 받은 키 입력!
 
 class Review(BaseModel):
     text: str

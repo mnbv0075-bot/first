@@ -1,5 +1,8 @@
-numpy
-pandas
-scikit-learn
-fastapi
-uvicorn
+numpy==2.5.1
+pandas==3.0.3
+scikit-learn==1.9.0
+fastapi==0.139.2
+uvicorn==0.50.2
+streamlit==1.59.0
+requests==2.34.2
+deep-translator==1.11.4

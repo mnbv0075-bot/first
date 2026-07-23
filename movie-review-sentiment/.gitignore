@@ -2,5 +2,5 @@ data/aclImdb/
 data/*.tar.gz
 data/ratings_train.txt
 __pycache__/
-*.pkl
+
 *.pyc

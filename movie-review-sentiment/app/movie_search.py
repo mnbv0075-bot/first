@@ -1,3 +1,4 @@
+import os
 import joblib
 import requests
 from fastapi import FastAPI
@@ -5,11 +6,11 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from deep_translator import GoogleTranslator
 app = FastAPI()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "..", "model", "sentiment_model.pkl"))
+vectorizer = joblib.load(os.path.join(BASE_DIR, "..", "model", "vectorizer.pkl"))
 
-model = joblib.load("../model/sentiment_model.pkl")
-vectorizer = joblib.load("../model/vectorizer.pkl")
-
-TMDB_API_KEY =  "e7555575912db616b2f3dc5f671a2b65"   # ← main_tmdb.py 14번째 줄에 있는 키 복사!
+TMDB_API_KEY = os.environ.get("TMDB_API_KEY", "")  # ← main_tmdb.py 14번째 줄에 있는 키 복사!
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -156,5 +157,4 @@ def search(data: SearchInput):
         "year": (movie.get("release_date") or "????")[:4],
         "poster": f"https://image.tmdb.org/t/p/w300{movie['poster_path']}" if movie.get("poster_path") else None,
         "total": total, "positive": positive, "negative": negative,
-        "ratio": ratio, "verdict": verdict, "details": details
-    }
+        "ratio": ratio, "verdict": verdict, "details": details}
